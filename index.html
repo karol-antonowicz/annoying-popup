@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wkurzający popup</title>
+</head>
+
+<style>
+.modal {
+  /*  background-color: rgba(0, 0, 0, 0.616); */
+    background-image: url(https://media1.tenor.com/images/6ecc92258ee19cc7d08024c2cd177b17/tenor.gif);
+}
+.none {
+    display: none;
+}
+.popup {
+    z-index: 1;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    border: 10px solid black;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    position: fixed;
+    height: 50%;
+    width: 50%;
+    top: 25%;
+    left: 25%;
+    overflow: hidden;
+    font-weight: bold;
+    min-height: 250px;
+    min-width: 180px;
+}
+.close {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border: none;
+    
+}
+.close:hover {
+    background-color: red;
+    color: black;
+    border: none;
+    cursor: pointer;
+    
+}
+</style>
+
+<body>
+    <div class="popup">
+        <p>Nikt nie spodziewał się, że po kliknięciu przycisku wyskoczy internetowy troll!</p>
+        <button class="close">Close dat damn popup</button>
+
+    </div>
+    <main>
+        <p>
+            Dodaj popup, który:<br/>
+            <ul>
+                <li>"wyskoczy" na środku okna (warstwa wyśrodkowana wzgledem body)</li>
+                <li>będzie zawierał zdanie "Nikt nie spodziewał się..."</li>
+                <li>będzie miał klasę "popup", przypisz do niej dowolny CSS dekoracyjny</li>
+                <li>pokaże się po kliknięciu w button poniżej, a zniknie po kliknięciu w button</li>
+            </ul>
+
+        </p>
+        <button class="btn">Don't click me!</button>
+    </main>
+
+<script>
+    var btnOpen = document.getElementsByClassName('btn')[0]
+    var popupDiv = document.getElementsByClassName('popup')[0]
+    var body = document.querySelector('body')
+    var main = document.querySelector('main')
+    btnOpen.onclick = function() {
+            popupDiv.style.display = "flex"
+            body.classList.add('modal')
+            main.style.display = 'none'
+    }
+    var btnClose = document.getElementsByClassName('close')[0]
+   
+        btnClose.onclick = function() {
+        popupDiv.style.display = "none"
+        body.classList.remove('modal')
+        main.style.display = 'initial'
+    }
+        btnClose.onmouseover = function() {
+        btnClose.style.position = "fixed"
+        btnClose.style.top = Math.random()*75 + "%"
+        btnClose.style.left = Math.random()*60 + "%"
+        
+ 
+    }
+       
+      
+</script>
+</body>
+</html>
