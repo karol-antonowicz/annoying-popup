@@ -81,12 +81,16 @@
     </main>
 
 <script>
+    //DECLARING VARIABLES//
+
     let btnOpen = document.getElementsByTagName('button')[0] //grabs first button element in html tree
     let popupDiv = document.createElement('div')            // creates div tag and stores it in popupDiv variable
     let makeP = document.createElement('p')                 // creates p tag and stores it in makeP variable
     let btnClose = document.createElement('button')         // creates button tag and stores it in btnClose variable
     let body = document.querySelector('body')               // grabs body tag in html tree
     let main = document.querySelector('main')               // grabs main tag in html tree
+
+    //WHAT HAPPENS WHEN YOU CLICK THE 'Don't click me!' BUTTON//
 
     btnOpen.onclick = function() {                      // when you click on the button first in html tree    
 
@@ -102,6 +106,8 @@
         body.classList.add('modal')                             // adds "modal" class to body
     }
 
+    //WHAT HAPPENS WHEN YOU CLICK THE 'Close dat damn popup' BUTTON //
+
     btnClose.onclick = function() {                      // when you click on "close dat damn button" button in popup div
 
         popupDiv.style.display = "none"                 // changes popup div's display to none
@@ -109,11 +115,13 @@
         main.style.display = 'initial'                  // changes main's display to initial
     }
 
+    // WHAT HAPPENS WHEN YOU HOVER OVER THE 'Close dat damn popup' BUTTON//
+
     btnClose.onmouseover = function() {                 // when you hover over the "close dat damn button" button
 
-        btnClose.style.position = "fixed"               // changes the "close dat damn button" position to fixed
-        btnClose.style.top = Math.random()*75 + "%"     // changes the "close dat damn button" position from top to random in %
-        btnClose.style.left = Math.random()*60 + "%"    // changes the "close dat damn button" position from left to random in %
+        btnClose.style.position = "fixed"               // changes the "close dat damn popup" position to fixed
+        btnClose.style.top = Math.random()*75 + "%"     // changes the "close dat damn popup" position from top to random in %
+        btnClose.style.left = Math.random()*60 + "%"    // changes the "close dat damn popup" position from left to random in %
     } 
 </script>
 </body>
