@@ -8,13 +8,17 @@
 </head>
 
 <style>
+
 .modal {
   /*  background-color: rgba(0, 0, 0, 0.616); */
     background-image: url(https://media1.tenor.com/images/6ecc92258ee19cc7d08024c2cd177b17/tenor.gif);
 }
+
+
 .none {
     display: none;
 }
+
 .popup {
     z-index: 1;
     text-align: center;
@@ -39,6 +43,7 @@
     min-height: 250px;
     min-width: 180px;
 }
+
 .close {
     background-color: black;
     color: white;
@@ -48,6 +53,7 @@
     border: none;
     
 }
+
 .close:hover {
     background-color: red;
     color: black;
@@ -55,14 +61,11 @@
     cursor: pointer;
     
 }
+
 </style>
 
 <body>
-    <div class="popup">
-        <p>Nikt nie spodziewał się, że po kliknięciu przycisku wyskoczy internetowy troll!</p>
-        <button class="close">Close dat damn popup</button>
-
-    </div>
+        </div>
     <main>
         <p>
             Dodaj popup, który:<br/>
@@ -74,35 +77,44 @@
             </ul>
 
         </p>
-        <button class="btn">Don't click me!</button>
+        <button>Don't click me!</button>
     </main>
 
 <script>
-    var btnOpen = document.getElementsByClassName('btn')[0]
-    var popupDiv = document.getElementsByClassName('popup')[0]
-    var body = document.querySelector('body')
-    var main = document.querySelector('main')
-    btnOpen.onclick = function() {
-            popupDiv.style.display = "flex"
-            body.classList.add('modal')
-            main.style.display = 'none'
+    let btnOpen = document.getElementsByTagName('button')[0] //grabs first button element in html tree
+    let popupDiv = document.createElement('div')            // creates div tag and stores it in popupDiv variable
+    let makeP = document.createElement('p')                 // creates p tag and stores it in makeP variable
+    let btnClose = document.createElement('button')         // creates button tag and stores it in btnClose variable
+    let body = document.querySelector('body')               // grabs body tag in html tree
+    let main = document.querySelector('main')               // grabs main tag in html tree
+
+    btnOpen.onclick = function() {                      // when you click on the button first in html tree    
+
+        body.appendChild(popupDiv)                         // adds div tag to body tag
+        makeP.innerText = 'Nikt nie spodziewał się, że po wciśnięciu przycisku wyskoczy internetowy troll!' //adds this text to p tag
+        popupDiv.appendChild(makeP)                         // adds p tag to div tag
+        popupDiv.appendChild(btnClose)                       // adds button tag to div tag
+        btnClose.innerText = 'Close dat damn button!'       // adds this text to the button tag in div tag
+        btnClose.classList.add('close')                     // adds class "close" to button tag 
+        popupDiv.classList.add('popup')                        // adds "popup" class to div tag
+        popupDiv.style.display = 'flex'                         // changes div's display to flex
+        main.style.display = 'none'                             // changes main's display to none
+        body.classList.add('modal')                             // adds "modal" class to body
     }
-    var btnClose = document.getElementsByClassName('close')[0]
-   
-        btnClose.onclick = function() {
-        popupDiv.style.display = "none"
-        body.classList.remove('modal')
-        main.style.display = 'initial'
+
+    btnClose.onclick = function() {                      // when you click on "close dat damn button" button in popup div
+
+        popupDiv.style.display = "none"                 // changes popup div's display to none
+        body.classList.remove('modal')                  // removes "modal" class from body
+        main.style.display = 'initial'                  // changes main's display to initial
     }
-        btnClose.onmouseover = function() {
-        btnClose.style.position = "fixed"
-        btnClose.style.top = Math.random()*75 + "%"
-        btnClose.style.left = Math.random()*60 + "%"
-        
- 
-    }
-       
-      
+
+    btnClose.onmouseover = function() {                 // when you hover over the "close dat damn button" button
+
+        btnClose.style.position = "fixed"               // changes the "close dat damn button" position to fixed
+        btnClose.style.top = Math.random()*75 + "%"     // changes the "close dat damn button" position from top to random in %
+        btnClose.style.left = Math.random()*60 + "%"    // changes the "close dat damn button" position from left to random in %
+    } 
 </script>
 </body>
 </html>
